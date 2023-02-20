@@ -23,5 +23,5 @@ jobs:
             -
                 name: Build Project
                 run: |
-                    g++ -Wall -Werror -c GameDie.c GameDie.h
+                    g++ -Wall -Werror -c GameDie.cpp GameDie.h
                     g++ -Wall -Werror GameDie.o -o GameDie 
