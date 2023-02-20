@@ -1,0 +1,27 @@
+name: Build CI
+
+on:
+    push:
+        branches: main
+
+jobs:
+    install:
+        runs-on: ubuntu-latest
+        steps:
+            -
+                name: Install Deps
+                run: |
+                    sudo apt-get update
+                    sudo apt-get install -y -f build-essential g++ cmake
+    build:
+        needs: install
+        runs-on: ubuntu-latest
+        steps:
+            -
+                name: Checkout
+                uses: actions/checkout@v3
+            -
+                name: Build Project
+                run: |
+                    g++ -Wall -Werror -c GameDie.c GameDie.h
+                    g++ -Wall -Werror GameDie.o -o GameDie 

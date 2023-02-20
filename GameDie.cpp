@@ -44,3 +44,29 @@ int GameDie::roll()
 vector <int> GameDie::get_distribution(){
     return roll_counter;
 }
+
+vector <double> GameDie::get_percentages(){
+    vector<double> ret(roll_counter.size());
+    int total = 0;
+    for(int& i : roll_counter)
+        total += i;
+    for(int i = 0; i < roll_counter.size(); ++i)
+        ret.at(i) = (double)roll_counter.at(i) / (double)total;
+    return ret;
+}
+
+#include <iostream>
+
+int main() {
+    GameDie* die = new GameDie();
+    for(int i = 0; i < 6; ++i)
+        die->roll();
+    vector<int> dist = die->get_distribution();
+    int j = 1;
+    for(int& i : dist) {
+        std::cout << "Rolled " << j << ' ' << i << " times." << std::endl;
+        ++j;
+    }
+    delete die;
+    return 0;
+}
