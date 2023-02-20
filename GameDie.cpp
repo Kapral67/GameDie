@@ -50,7 +50,7 @@ vector <double> GameDie::get_percentages(){
     int total = 0;
     for(int& i : roll_counter)
         total += i;
-    for(int i = 0; i < roll_counter.size(); ++i)
+    for(int i = 0; i < (int)roll_counter.size(); ++i)
         ret.at(i) = (double)roll_counter.at(i) / (double)total;
     return ret;
 }
